@@ -46,9 +46,24 @@ describe 'Create tests for a hash' do
     # use .keys to create array of only keys
 
     num_of_keys = []
-    small_fruit_nutrition_details.each_value{|value| num_of_keys << value.length}
+    num_of_values_array = []
+
+
+    small_fruit_nutrition_details.each_value{|value| num_of_keys << value.keys.length}
 
     expect(num_of_keys.uniq).to eq [4]
+
+    small_fruit_nutrition_details.each_value{ |value|
+      num_of_values = 0
+        value.each_value{|value2|
+          if value2 != nil
+            num_of_values += 1
+          end
+        }
+      num_of_values_array << num_of_values
+      }
+
+    expect(num_of_values_array.uniq).to eq num_of_keys.uniq
   end
 
   it 'all calories should be between 40 to 150' do

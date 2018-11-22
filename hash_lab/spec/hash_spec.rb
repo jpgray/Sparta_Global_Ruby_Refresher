@@ -33,21 +33,29 @@ describe 'Create tests for a hash' do
       }
   }
 
+
+
+
   it 'avocados should have calories from fat great than 20' do
     expect(small_fruit_nutrition_details[:avocado][:calories]).to be > 20
   end
+
+
+
 
   it 'plums and apples should get no calories from fat' do
     expect(small_fruit_nutrition_details[:apple][:calories_from_fat]).to be 0
     expect(small_fruit_nutrition_details[:plums][:calories_from_fat]).to be 0
   end
 
+
+
+
   it 'each fruit should have 4 keys' do
     # use .keys to create array of only keys
 
     num_of_keys = []
     num_of_values_array = []
-
 
     small_fruit_nutrition_details.each_value{|value| num_of_keys << value.keys.length}
 
@@ -66,7 +74,11 @@ describe 'Create tests for a hash' do
     expect(num_of_values_array.uniq).to eq num_of_keys.uniq
   end
 
+
+
+
   it 'all calories should be between 40 to 150' do
+    
     @flag = true
     small_fruit_nutrition_details.each_value{|value|
     puts value[:calories]
@@ -79,5 +91,8 @@ describe 'Create tests for a hash' do
     expect(@flag).to eq true
 
   end
+
+
+
 
 end
